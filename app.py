@@ -1,24 +1,13 @@
-# from glob import glob
-# import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-# from keras import losses 
-# from keras import optimizers 
-# from keras import metrics 
-#added
 
-import os  
-import time
-import importlib
+
 import base64
-import argparse
 import io
 import numpy as np
 import pandas as pd
-import networkx as nx
-from turtle import color
+
 import dash
-import dash_auth
 import dash_table
 import dash_core_components as dcc
 import dash_html_components as html
@@ -106,9 +95,9 @@ from algorithms.data import GlobalData
 
 # Basic dash auth
 # Keep this out of source code repository - save in a file or a database
-VALID_USERNAME_PASSWORD_PAIRS = {
-    'hello': 'world'
-}
+# VALID_USERNAME_PASSWORD_PAIRS = {
+#     'hello': 'world'
+# }
 
 
 #import utils.figures as figs
@@ -127,10 +116,10 @@ app = dash.Dash(
     external_stylesheets=external_stylesheets
 )
 server = app.server
-auth = dash_auth.BasicAuth(
-    app,
-    VALID_USERNAME_PASSWORD_PAIRS
-)
+# auth = dash_auth.BasicAuth(
+#     app,
+#     VALID_USERNAME_PASSWORD_PAIRS
+# )
 
 app.title = 'Alfarvis'
 
@@ -1410,4 +1399,4 @@ def getvisulization(n_clicks,featureselection,referencevis,filename):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
