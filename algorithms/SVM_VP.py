@@ -8,7 +8,6 @@ from dash.dependencies import Input, Output, State
 
 import numpy as np
 import pandas as pd
-import networkx as nx
 
 import utils.dash_reusable_components as drc
 

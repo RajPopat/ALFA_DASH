@@ -1,7 +1,7 @@
 from tensorflow import keras
 from tensorflow.keras import layers
 
-
+import os
 import base64
 import io
 import numpy as np
@@ -1201,15 +1201,23 @@ def ArtificialNeuralNetworksAnalysis(n_clicks,featureselection,reference,numfold
         
         activationFun=[{'label':'Relu','value':'relu'},{'label':'Sigmoid','value':'sigmoid'}]
         ans1=html.Div(className='rowhalf2',children=[       
-                                html.Div(className='colhalf2',children=[
-                                    drc.NamedDropdown(name="select nodes value",
-                                    id="nodesv",                                            
-                                    clearable=True,
-                                    searchable=True,
-                                    options=[{'label':str(i),'value':i} for i in range(1,10)],
-                                    value=5,
-                                    multi=False
-                                    ),html.Button('Add Layer', id='addlayer',n_clicks=0)]),
+                                 html.Div(className='colhalf2',children=[
+                                #     drc.NamedDropdown(name="select nodes value",
+                                #     id="nodesv",                                            
+                                #     clearable=True,
+                                #     searchable=True,
+                                #     options=[{'label':str(i),'value':i} for i in range(1,10)],
+                                #     value=5,
+                                #     multi=False
+                                #     ),
+                                
+                                html.B('Enter the number of nodes for layer'),
+                                    html.Div(dcc.Input(
+                                    id="nodesv",
+                                    type="number",
+                                    placeholder="Enter the number of nodes",),),
+                                    html.Br(),
+                                    html.Button('Add Layer', id='addlayer',n_clicks=0)]),
                                 html.Div(className='colhalf2',children=[
                                     drc.NamedDropdown(name="Select activation function",
                                     id="activationfunction",                                            
@@ -1238,14 +1246,15 @@ def UpdateModel(addb,deleteb,nodesv,activationfunction):
     layercnt=globalData.dataGuru.getLAYERCNT()
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
     artificialneuralnetworks= globalData.dataGuru.getALGO()   
-    if button_id=='addlayer' and addb>0:
+    if button_id=='addlayer' and addb>0 and nodesv!=None and nodesv!=0:
+        
         print(addb,3)
         globalData.dataGuru.setLAYERCNT(layercnt+1)
         model=globalData.dataGuru.getMODEL()
         features_dim=len(artificialneuralnetworks.features)
         if layercnt==-1:
             model = keras.Sequential()
-            model.add(layers.Dense(10, input_dim=features_dim, activation='relu',name='Input_Layer'))
+            model.add(layers.Dense(nodesv, input_dim=features_dim, activation='relu',name='Input_Layer'))
         summary=artificialneuralnetworks.addlayer(globalData,model,nodesv,activationfunction,layercnt+1)
         return html.Div(summary)
     elif button_id=='deletelayer' and deleteb>0:
@@ -1399,4 +1408,4 @@ def getvisulization(n_clicks,featureselection,referencevis,filename):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)

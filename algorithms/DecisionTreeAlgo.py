@@ -91,13 +91,13 @@ class DecisionTreeAlgo:
         flag=0
         
         #check reference contain string value or not
-        for i in  df2['reference000']:
-            if isinstance(i, str):
-                flag=1
-                break 
+        # for i in  df2['reference000']:
+        #     if isinstance(i, str):
+        #         flag=1
+        #         break 
             
-        if flag==1:
-            return [html.B('string value is not allowed in reference')]
+        # if flag==1:
+        #     return [html.B('string value is not allowed in reference')]
         
         #check reference is not selected in features 
         for i in self.features:
