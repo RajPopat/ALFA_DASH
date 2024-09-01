@@ -1,7 +1,7 @@
 # from glob import glob
 # import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
+#from tensorflow import keras
+#from tensorflow.keras import layers
 # from keras import losses 
 # from keras import optimizers 
 # from keras import metrics 
@@ -85,8 +85,8 @@ from algorithms.AutoML_VP import AutoML_VP
 from algorithms.AutoMLAlgo import AutoMLAlgo
 from algorithms.LogisticRegression_VP import LogisticRegression_VP
 from algorithms.LogisticRegressionAlgo import LogisticRegressionAlgo
-from algorithms.ArtificialNeuralNetworks_VP import ArtificialNeuralNetworks_VP
-from algorithms.ArtificialNeuralNetworksAlgo import ArtificialNeuralNetworksAlgo
+#from algorithms.ArtificialNeuralNetworks_VP import ArtificialNeuralNetworks_VP
+#from algorithms.ArtificialNeuralNetworksAlgo import ArtificialNeuralNetworksAlgo
 
 
 import plotly.express as px
@@ -167,7 +167,7 @@ randomForest_VP=RandomForest_VP()
 svm_VP=SVM_VP()
 autoML_VP=AutoML_VP()
 logisticRegression_VP=LogisticRegression_VP()
-artificialNeuralNetworks_VP=ArtificialNeuralNetworks_VP()
+#artificialNeuralNetworks_VP=ArtificialNeuralNetworks_VP()
 
 kmeansClustering_VP=KmeansClustering_VP()
 
